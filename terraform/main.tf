@@ -5,9 +5,9 @@ provider "aws" {
 resource "aws_db_instance" "app_db" {
   allocated_storage    = 20
   engine               = "mysql"
-  instance_class       = "db.t2.micro"
-  identifier           = "appdb-instance"      # <-- instance name
-  db_name              = "appdb"               # <-- database name
+  instance_class       = "db.t3.micro"           # <-- changed from db.t2.micro
+  identifier           = "appdb-instance"
+  db_name              = "appdb"
   username             = "admin"
   password             = "password123"
   parameter_group_name = "default.mysql8.0"
