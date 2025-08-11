@@ -6,7 +6,8 @@ resource "aws_db_instance" "app_db" {
   allocated_storage    = 20
   engine               = "mysql"
   instance_class       = "db.t2.micro"
-  name                 = "appdb"
+  identifier           = "appdb-instance"      # <-- instance name
+  db_name              = "appdb"               # <-- database name
   username             = "admin"
   password             = "password123"
   parameter_group_name = "default.mysql8.0"
@@ -14,7 +15,7 @@ resource "aws_db_instance" "app_db" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-010876b9ddd38475e" 
+  ami           = "ami-010876b9ddd38475e"
   instance_type = "t2.micro"
 
   user_data = <<-EOF
@@ -24,7 +25,7 @@ resource "aws_instance" "app_server" {
               systemctl start docker
               systemctl enable docker
               usermod -aG docker ubuntu
-              docker run -d -p 80:80 --env DB_HOST=${aws_db_instance.app_db.address} --env DB_USER=admin --env DB_PASS=password123 yourdockerhubuser/yourapp:latest
+              docker run -d -p 80:80 --env DB_HOST=${aws_db_instance.app_db.address} --env DB_USER=admin --env DB_PASS=password123 priyadharshiniro7/fleet-management-app:latest
               EOF
 
   tags = {
