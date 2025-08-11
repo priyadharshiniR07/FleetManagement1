@@ -17,7 +17,7 @@ resource "aws_db_instance" "app_db" {
 resource "aws_instance" "app_server" {
   ami           = "ami-010876b9ddd38475e"
   instance_type = "t2.micro"
-  key_name      = "mynewkeypair"   # <-- Add this line
+  key_name      = "mynewpair"   # <-- Add this line
 
   user_data = <<-EOF
     #!/bin/bash
