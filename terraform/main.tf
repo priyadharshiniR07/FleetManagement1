@@ -17,16 +17,17 @@ resource "aws_db_instance" "app_db" {
 resource "aws_instance" "app_server" {
   ami           = "ami-010876b9ddd38475e"
   instance_type = "t2.micro"
+  key_name      = "fleetkeypair"   # <-- Add this line
 
   user_data = <<-EOF
-              #!/bin/bash
-              apt-get update -y
-              apt-get install -y docker.io
-              systemctl start docker
-              systemctl enable docker
-              usermod -aG docker ubuntu
-              docker run -d -p 80:80 --env DB_HOST=${aws_db_instance.app_db.address} --env DB_USER=admin --env DB_PASS=password123 priyadharshiniro7/fleet-management-app:latest
-              EOF
+    #!/bin/bash
+    apt-get update -y
+    apt-get install -y docker.io
+    systemctl start docker
+    systemctl enable docker
+    usermod -aG docker ubuntu
+    docker run -d -p 80:80 --env DB_HOST=${aws_db_instance.app_db.address} --env DB_USER=admin --env DB_PASS=password123 priyadharshiniro7/fleet-management-app:latest
+    EOF
 
   tags = {
     Name = "AppServer"
