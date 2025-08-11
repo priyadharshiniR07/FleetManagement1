@@ -1,0 +1,93 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'addbook.css' %}">
+
+<div class="main-content">
+    <div class="breadcrumb">Vehicle / Add Booking</div>
+    <h2>Add Booking</h2>
+<form method="POST" action="{% url 'addbook' %}" class="booking-form">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group">
+                <label for="CusID">Customer Name*</label>
+                <select id="CusID" name="CusID" required>
+                    <option value="">Select Customer</option>
+                    {% for customer in customers %}
+                    <option value="{{ customer.id }}">{{ customer.CusName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="VehicleID">Vehicle*</label>
+                <select id="VehicleID" name="VehicleID" required>
+                    <option value="">Select Vehicle</option>
+                    {% for vehicle in vehicles %}
+                    <option value="{{ vehicle.id }}">{{ vehicle.Name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="DriverID">Driver*</label>
+                <select id="DriverID" name="DriverID" required>
+                    <option value="">Select Driver</option>
+                    {% for driver in drivers %}
+                    <option value="{{ driver.id }}">{{ driver.Name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="TripType">Trip Type*</label>
+                <select id="TripType" name="TripType" required>
+                    <option value="">Select Trip Type</option>
+                    <option value="One Way">One Way</option>
+                    <option value="Round Trip">Round Trip</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="StartLocation">Trip Start Location*</label>
+                <input type="text" id="StartLocation" name="StartLocation" placeholder="Trip Start Location" required>
+            </div>
+            <div class="form-group">
+                <label for="EndLocation">Trip End Location*</label>
+                <input type="text" id="EndLocation" name="EndLocation" placeholder="Trip End Location" required>
+            </div>
+            <div class="form-group">
+                <label for="ApproxKM">Approx Total KM*</label>
+                <input type="text" id="ApproxKM" name="ApproxKM" placeholder="Approx Total KM" required>
+            </div>
+            <div class="form-group">
+                <label for="StartDate">Trip Start Date*</label>
+                <input type="date" id="StartDate" name="StartDate" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="EndDate">Trip End Date*</label>
+                <input type="date" id="EndDate" name="EndDate" required>
+            </div>
+            <div class="form-group">
+                <label for="TotalAmount">Total Amount*</label>
+                <input type="text" id="TotalAmount" name="TotalAmount" placeholder="Total Amount" required>
+            </div>
+            <div class="form-group">
+                <label for="Status">Trip Status</label>
+                <select id="Status" name="Status">
+                    <option value="">Trip Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row email-row">
+            <input type="checkbox" id="email" name="email">
+            <label for="email">Is need to sent Booking confirmation email to customer?</label>
+        </div>
+        <button type="submit" class="add-trip-btn">Add Trip</button>
+    </form>
+</div>
+{% endblock %}

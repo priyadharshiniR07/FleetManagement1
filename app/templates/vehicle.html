@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{%load  static %}
+{% block content%}
+<link rel="stylesheet" href="{% static 'vehicle.css' %}">
+        <main class="main-content vehicle-group-page">
+            <header class="page-header">
+                <div class="header-left">
+                    <h1>Vehicle Group</h1>
+                    <button class="add-new-group-btn"onclick=window.location.href="addnew.html" > + Add New Group </button>
+                </div>
+                <div class="header-right">
+                    <div class="page-path">Dashboard / Vehicle Group</div>
+                    <div class="search-input">
+                        <input type="text" placeholder="search">
+                    </div>
+                </div>
+            </header>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Created Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                </table>
+                <div class="pagination">
+                    <button class="previous-btn">previous</button>
+                    <button class="next-btn">Next</button>
+                </div>
+            </div>
+        </main>
+    {% endblock %}

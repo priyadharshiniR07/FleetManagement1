@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+<link rel="stylesheet" href="{% static 'vehiclemag.css' %}">
+
+<main>
+    <div class="vehicle-tabs">
+        <div class="tabs">
+            <a href="/fleet/bookings"> <button>Basic Info</button></a>
+            <a href="/fleet/bookings2"> <button>Bookings</button></a>
+            <a href="/fleet/vehiclemag"><button class="active">Income & Expense</button></a>
+        </div>
+        <div class="tab-content">
+            <div class="table-header">
+                <span>#</span>
+                <span>Date</span>
+                <span>Description</span>
+                <span>Amount</span>
+                <span>Type</span>
+                <span>Action</span>
+                <span class="search">
+                    Search: <input type="text" placeholder="Filter...">
+                </span>
+            </div>
+            {% if bookings %}
+                {% for booking in bookings %}
+                <div class="table-row">
+                    <span>{{ forloop.counter }}</span>
+                    <span>{{ booking.StartDate }}</span>
+                    <span>{{ booking.TripType }}</span>
+                    <span>{{ booking.TotalAmount }}</span>
+                    <span>{{ booking.Status }}</span>
+                    <span>
+                        <a href="{% url 'bookings' %}">View</a>
+                    </span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="table-row no-data">
+                    No data available in table
+                </div>
+            {% endif %}
+            <div class="table-footer">
+                <button disabled>Previous</button>
+                <button disabled>Next</button>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

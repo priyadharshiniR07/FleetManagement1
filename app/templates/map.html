@@ -1,0 +1,130 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+<link rel="stylesheet" href="{% static 'vehiclemag.css' %}">
+
+<main>
+{% comment %} start {% endcomment %}
+    <h2>Live Vehicle Tracking</h2>
+    
+    <div id="map-container">
+        <div id="map"></div>
+        
+        <div class="map-fullscreen">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <polyline points="9 21 3 21 3 15"></polyline>
+                <line x1="21" y1="3" x2="14" y2="10"></line>
+                <line x1="3" y1="21" x2="10" y2="14"></line>
+            </svg>
+        </div>
+        
+        <div class="map-controls">
+            <button id="zoom-in" title="Zoom In">+</button>
+            <button id="zoom-out" title="Zoom Out">−</button>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <img src="{% static 'lorry.png' %}" alt="Moving Lorry Icon" style="width: 24px; height: 24px; vertical-align: middle;">
+                <span>Active Vehicle (Moving Lorry)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #007bff;"></div> <span>K.K. Nagar, Meenakshi College (Fixed)</span>
+            </div>
+        </div>
+        
+        <div class="status-bar">
+            <div>Keyboard shortcuts</div>
+            <div>Map data ©2025 Google, INEGI</div>
+            <div>Terms of Use</div>
+            <div id="current-time"></div>
+            <div id="current-date"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    
+    <script>
+        // Coordinates for K.K. Nagar, Meenakshi College
+        const MEENAKSHI_COLLEGE_LAT = 13.041973893763936;
+        const MEENAKSHI_COLLEGE_LNG =  80.18864407912154;
+        const MEENAKSHI_COLLEGE_COORDS = [MEENAKSHI_COLLEGE_LAT, MEENAKSHI_COLLEGE_LNG];
+
+        // Initialize the map centered on Meenakshi College
+        const map = L.map('map').setView(MEENAKSHI_COLLEGE_COORDS, 15); // Zoom level 15 is good for a campus view
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://developers.google.com/maps/terms">Google</a>'
+        }).addTo(map);
+        
+        // Icon for the moving lorry (using your provided lorry.png)
+        const movingLorryIcon = L.icon({
+            iconUrl: '{% static "lorry.png" %}', 
+            iconSize: [40, 40], // Adjust size as needed for your image
+            iconAnchor: [20, 40], // Center bottom of the icon
+            popupAnchor: [0, -40] // Adjust popup anchor
+        });
+
+        // --- Fixed Marker for K.K. Nagar, Meenakshi College (Standard Blue Leaflet Marker) ---
+        // This will be a standard blue Leaflet pin.
+        const collegeMarker = L.marker(MEENAKSHI_COLLEGE_COORDS)
+            .addTo(map)
+            .bindPopup('<b>K.K. Nagar, Meenakshi College</b><br>Fixed Location');
+        collegeMarker.openPopup(); // Open the popup by default
+
+        // --- Moving Lorry's starting position (near K.K. Nagar) ---
+        // Slightly offset from the college to show movement, but still in the vicinity.
+        let lorryLat = MEENAKSHI_COLLEGE_LAT + 0.002; // A bit north
+        let lorryLng = MEENAKSHI_COLLEGE_LNG - 0.003; // A bit west
+
+        const movingLorryMarker = L.marker([lorryLat, lorryLng], { icon: movingLorryIcon }); // Using your lorry.png
+        movingLorryMarker.addTo(map).bindPopup('<b>Active Vehicle ID: TN-45-AB-1234</b><br>Speed: 60 km/h<br>Last Updated: <span id="lorry-last-update">Just now</span><br>Engine Condition: Good<br><br>Temp: 80 celsius <br><br>Fuel: 60% <br>');
+        
+        // Simulate the vehicle movement 
+        const moveInterval = setInterval(() => {
+            lorryLat += 0.0005; 
+            lorryLng += 0.0007; 
+
+            // Simple boundary check to keep it somewhat near K.K. Nagar.
+            if (lorryLat > MEENAKSHI_COLLEGE_LAT + 0.005 || lorryLng > MEENAKSHI_COLLEGE_LNG + 0.005 || 
+                lorryLat < MEENAKSHI_COLLEGE_LAT - 0.005 || lorryLng < MEENAKSHI_COLLEGE_LNG - 0.005) {
+                // Reset to a nearby starting point if it moves too far
+                lorryLat = MEENAKSHI_COLLEGE_LAT + 0.002; 
+                lorryLng = MEENAKSHI_COLLEGE_LNG - 0.003;
+            }
+
+            movingLorryMarker.setLatLng([lorryLat, lorryLng]);
+            document.getElementById('lorry-last-update').textContent = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+        }, 5000); 
+
+        document.getElementById('zoom-in').addEventListener('click', () => { map.zoomIn(); });
+        document.getElementById('zoom-out').addEventListener('click', () => { map.zoomOut(); });
+        
+        document.querySelector('.map-fullscreen').addEventListener('click', () => {
+            const mapContainer = document.getElementById('map-container');
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                mapContainer.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message} (Is your browser compatible and granted permission?)`);
+                });
+            }
+        });
+        
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+        }
+        
+        updateTime(); 
+        setInterval(updateTime, 1000); 
+    </script>
+{% comment %} end {% endcomment %}
+    
+</main>
+{% endblock %}

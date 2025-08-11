@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'cusinfo.css' %}">
+    <div class="main-content">
+        <div class="breadcrumb">Dashboard / Customer Info</div>
+        <h2>Customer Info</h2>
+        <div class="table-container">
+            <div class="table-header">
+                <div></div>
+                <div class="search-box">
+                    <label>Search: <input type="text" placeholder="Search"></label>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if customers %}
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ customer.CusName }}</td>
+                            <td>{{ customer.MobileNo }}</td>
+                            <td>{{ customer.Email }}</td>
+                            <td>{{ customer.Address }}</td>
+                            <td>Active</td>
+                            <td><a href="#">Edit</a></td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="no-data">No data available in table</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            <div class="table-footer">
+                <button disabled>Previous</button>
+                <button disabled>Next</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

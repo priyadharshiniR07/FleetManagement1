@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'addcus.css' %}">
+<div class="main-content">
+    <div class="breadcrumb">
+        Customer / Add Customer
+    </div>
+    <h2>Add Customer</h2>
+    <form method="POST" action="{% url 'addcus' %}" class="add-customer-form">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group">
+                <label for="CusName">Name<span>*</span></label>
+                <input type="text" id="CusName" name="CusName" placeholder="Customer Name" required>
+            </div>
+            <div class="form-group">
+                <label for="MobileNo">Mobile<span>*</span></label>
+                <input type="text" id="MobileNo" name="MobileNo" placeholder="Customer Mobile" required>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="email" id="Email" name="Email" placeholder="Customer Email">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group address-group">
+                <label for="Address">Address<span>*</span></label>
+                <textarea id="Address" name="Address" placeholder="Address" required></textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Add Customer</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

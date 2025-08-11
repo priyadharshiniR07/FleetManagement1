@@ -1,0 +1,92 @@
+/* body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #e0f2f7; /* Light teal background */
+    /* color: #333;
+    display: flex;} 
+ */ 
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #e0f2f7; /* Light teal background */
+    background: linear-gradient(to bottom right, #f4f7f9, #dbe9f4);
+
+    } 
+    
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-left h2 {
+    margin: 0;
+}
+
+.header-left button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.header-right .search-bar input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.header-right .breadcrumbs {
+    color: #777;
+    margin-top: 10px;
+}
+
+main table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+main th, main td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+main th {
+    background-color: #f2f2f2;
+}
+
+main .status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+main .status.active {
+    background-color: green;
+}
+
+main .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+main .pagination button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+main .pagination .page-number {
+    margin-left: 10px;
+    margin-right: 10px;
+}

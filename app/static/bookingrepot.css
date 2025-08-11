@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f6fbfc;
+}
+
+.main-content {
+    margin-left: 220px;
+    min-height: 100vh;
+    background: #f6fbfc;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #fff;
+    padding: 25px 40px 10px 40px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.header span {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: #1976d2;
+    margin-top: 2px;
+}
+
+.content {
+    padding: 40px;
+    flex: 1;
+}
+
+.report-form {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+input[type="date"], select {
+    padding: 7px 10px;
+    border: 1px solid #b0bec5;
+    border-radius: 4px;
+    font-size: 15px;
+    background: #f6fbfc;
+    color: #333;
+}
+
+.generate-btn {
+    padding: 10px 25px;
+    background: #fff;
+    color: #1976d2;
+    border: 1px solid #1976d2;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.generate-btn:hover {
+    background: #1976d2;
+    color: #fff;
+}
+
+.footer {
+    background: #fff;
+    padding: 10px 40px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #888;
+}

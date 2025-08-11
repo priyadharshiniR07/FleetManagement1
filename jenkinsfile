@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_REGION = 'ap-southeast-2'
+        DOCKER_IMAGE = 'priyadharshiniro7/fleet-management-app'
+        GIT_REPO = 'https://github.com/priyadharshiniR07/FleetManagement1.git'
+    }
+
+    stages {
+        stage('Clone from GitHub') {
+            steps {
+                git branch: 'main', url: "https://github.com/priyadharshiniR07/FleetManagement1.git"
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build("fleet-management-app")
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    script {
+                        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-creds') {
+                            docker.image("fleet-management-app").push()
+                        }
+                    }
+                }
+            }
+        }
+        stage('Terraform Init & Apply') {
+            steps {
+                dir('terraform') {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
+                        sh '''
+                            terraform init
+                            terraform apply -auto-approve
+                        '''
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,76 @@
+{%load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+<style>
+    body, .dashboard-container {
+        background-color: #e7e6e4; /* cream white */
+    }
+</style>
+    <div class="topbar">
+    <div class="logo-section">
+      <img src="https://img.icons8.com/ios-filled/40/ffffff/bus.png" alt="logo" class="logo-img">
+      <span class="logo-text">TrackSure</span>
+    </div>
+  </div>
+    <div class="dashboard-container">
+        <aside class="left-panel">
+            <div class="logo-area"> 
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="nav-item active"><a href="{% url 'index' %}">Dashboard</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="{% url 'basicinfo' %}" class="dropdown-toggle">Vehicle <span class="arrow">&#x25BC;</span></a>
+                        <ul class="dropdown-menu"> 
+                            <li class="nav-subitem"><a href="{% url 'vehiclemag' %}">Vehicle List</a></li>
+                            <li class="nav-subitem"><a href="{% url 'addnew' %}">Add Vehicle</a></li>
+                            <li class="nav-subitem"><a href="{% url 'vehman' %}">Vehicle management</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="{% url 'driverinfo' %}" class="dropdown-toggle">Driver <span class="arrow">&#x25BC;</span></a>
+                        <ul class="dropdown-menu"> 
+                            <li class="nav-subitem"><a href="{% url 'driverinfo' %} ">Driver List</a></li>
+                            <li class="nav-subitem"><a href="{% url 'adddriver' %}">Add driver</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                <a href="{% url 'bookings' %}" class="dropdown-toggle">Bookings <span class="arrow">&#x25BC;</span></a>
+                        <ul class="dropdown-menu">
+                    <li class="nav-subitem"><a href="{% url 'bookings2' %}">Booking List</a></li>
+                    <li class="nav-subitem"><a href="{% url 'addbook' %}">Add Booking</a></li>
+                        </ul>
+                    </li>
+                <li class="nav-item dropdown">
+                    <a href="{% url 'cusinfo' %}" class="dropdown-toggle">Customer <span class="arrow">&#x25BC;</span></a>
+                        <ul class="dropdown-menu">
+                    <li class="nav-subitem"><a href="{% url 'cusinfo' %}">Customer Management</a></li>
+                    <li class="nav-subitem"><a href="{% url 'addcus' %}">Add Customer</a></li>
+                </ul>
+                </li>
+                <li class="nav-item dropdown">
+                <a href="{% url 'remainder' %}" class="dropdown-toggle">Remainder <span class="arrow">&#x25BC;</span></a>
+                        <ul class="dropdown-menu">
+                    <li class="nav-subitem"><a href="{% url 'addrem' %}">Add Remainder</a></li>
+                </ul>
+                </li>
+                <li class="nav-item dropdown">
+
+                <a href="{% url 'inex' %}" >Income & Expenses </a>
+                <br><a href="{% url 'map' %}" >Tracking </a>
+            </ul>
+        </li>
+            </nav>
+        </aside>
+        {% block content %}
+        {% endblock %}
+    </div>
+    </body>
+</html>

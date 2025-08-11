@@ -1,0 +1,66 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'bookings2.css' %}">
+    <main>
+      <div class="breadcrumb">
+        Home / Vehicle Details
+      </div>
+      <h2>Vehicle Details</h2>
+      <div class="vehicle-details-container">
+        <div class="vehicle-card">
+          <h3>Mitsubishi Mirage</h3>
+          <div class="vehicle-type">CAR</div>
+          <div class="status active">Active</div>
+          <div class="vehicle-stats">
+            <div>Bookings <span>0</span></div>
+            <div>Geofence <span>0</span></div>
+            <div>Notifications <span>0</span></div>
+          </div>
+        </div>
+        <div class="vehicle-tabs">
+          <div class="tabs">
+            <button>Basic Info</button>
+            <button class="active">Bookings</button>
+            <button>Geofence</button>
+            <button>Income & Expense</button>
+          </div>
+          <div class="tab-content">
+            <div class="table-header">
+              <span>#</span>
+              <span>Driver</span>
+              <span>Customer</span>
+              <span>From & To</span>
+              <span>Booking Value</span>
+              <span>Trip Status</span>
+              <span>Action</span>
+              <span class="search">
+                Search: <input type="text">
+              </span>
+            </div>
+            {% if bookings %}
+                {% for booking in bookings %}
+                <div class="table-row">
+                    <span>{{ forloop.counter }}</span>
+                    <span>{{ booking.DriverID.Name }}</span>
+                    <span>{{ booking.CusID.CusName }}</span>
+                    <span>{{ booking.StartLocation }} - {{ booking.EndLocation }}</span>
+                    <span>{{ booking.TotalAmount }}</span>
+                    <span>{{ booking.Status }}</span>
+                    <span><a href="#">Edit</a></span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="table-row no-data">
+                    No data available in table
+                </div>
+            {% endif %}
+            <div class="table-footer">
+              <button disabled>Previous</button>
+              <button disabled>Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+{% endblock %}

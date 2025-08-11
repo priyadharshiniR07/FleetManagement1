@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'bookings.css' %}">
+<div class="main-content">
+    <div class="breadcrumb">Dashboard / Bookings</div>
+    <h2>Bookings</h2>
+    <div class="table-container">
+        <div class="table-header">
+            <div></div>
+            <div class="search-box">
+                <label>Search: <input type="text" placeholder="Search"></label>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Customer</th>
+                    <th>Vehicle</th>
+                    <th>Driver</th>
+                    <th>Trip Type</th>
+                    <th>Start Location</th>
+                    <th>End Location</th>
+                    <th>Approx KM</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if bookings %}
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ booking.CusID.CusName }}</td>
+                        <td>{{ booking.VehicleID.Name }}</td>
+                        <td>{{ booking.DriverID.Name }}</td>
+                        <td>{{ booking.TripType }}</td>
+                        <td>{{ booking.StartLocation }}</td>
+                        <td>{{ booking.EndLocation }}</td>
+                        <td>{{ booking.ApproxKM }}</td>
+                        <td>{{ booking.StartDate }}</td>
+                        <td>{{ booking.EndDate }}</td>
+                        <td>{{ booking.TotalAmount }}</td>
+                        <td>{{ booking.Status }}</td>
+                        <td><a href="#">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="13" class="no-data">No data available in table</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <div class="table-footer">
+            <button disabled>Previous</button>
+            <button disabled>Next</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

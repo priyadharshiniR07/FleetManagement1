@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'addrem.css' %}">
+<div class="main-content">
+    <div class="breadcrumb">
+        Reminder / Add Reminder
+    </div>
+    <h2>Add Reminder</h2>
+<form method="POST" action="{% url 'addrem' %}" class="add-reminder-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="VehicleID">Vehicle<span>*</span></label>
+            <select id="VehicleID" name="VehicleID" required>
+                <option value="">Select Vehicle</option>
+                {% for vehicle in vehicles %}
+                <option value="{{ vehicle.id }}">{{ vehicle.Name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="RemDate">Date</label>
+            <input type="date" id="RemDate" name="RemDate" required>
+        </div>
+        <div class="form-group">
+            <label for="Message">Message</label>
+            <textarea id="Message" name="Message" placeholder="Message"></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Add reminder</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

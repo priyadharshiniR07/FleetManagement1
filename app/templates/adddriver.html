@@ -1,0 +1,67 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'adddriver.css' %}">
+<main>
+  <div class="breadcrumb">
+    Vehicle / Add driver
+  </div>
+  <h2>Add driver</h2>
+<form method="POST" action="{% url 'adddriver' %}" class="add-driver-form">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group">
+        <label for="Name">Driver Name*</label>
+        <input type="text" id="Name" name="Name" placeholder="Driver Name" required>
+      </div>
+      <div class="form-group">
+        <label for="MobileNo">Mobile*</label>
+        <input type="text" id="MobileNo" name="MobileNo" placeholder="Mobile" required>
+      </div>
+      <div class="form-group">
+        <label for="Age">Age*</label>
+        <input type="text" id="Age" name="Age" placeholder="Age" required>
+      </div>
+      <div class="form-group">
+        <label for="LicenseNo">License No*</label>
+        <input type="text" id="LicenseNo" name="LicenseNo" placeholder="License No" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="LicenseExpDate">License Expiry Date*</label>
+        <input type="date" id="LicenseExpDate" name="LicenseExpDate" placeholder="License Expiry Date" required>
+      </div>
+      <div class="form-group">
+        <label for="TotalExperience">Total Experience*</label>
+        <input type="text" id="TotalExperience" name="TotalExperience" placeholder="Total Experience" required>
+      </div>
+      <div class="form-group">
+        <label for="DateOfJoining">Date of Joining*</label>
+        <input type="date" id="DateOfJoining" name="DateOfJoining" placeholder="Date of Joining" required>
+      </div>
+      <div class="form-group">
+        <label for="ReferenceNotes">Reference/Notes</label>
+        <input type="text" id="ReferenceNotes" name="ReferenceNotes" placeholder="Reference or Notes">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group address-group">
+        <label for="Address">Address*</label>
+        <textarea id="Address" name="Address" placeholder="Address" required></textarea>
+      </div>
+      <div class="form-group status-group">
+        <label for="Status">Driver Status</label>
+        <select id="Status" name="Status">
+          <option value="">Select Driver Status</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="submit">Add Driver</button>
+    </div>
+  </form>
+</main>
+{% endblock %}

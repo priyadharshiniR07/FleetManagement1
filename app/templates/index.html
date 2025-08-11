@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<style>
+.body{
+    background-color: #fdf5e6; /* cream white */
+}
+</style>
+<main class="main-content">
+    <header class="dashboard-header">
+        <h1>Dashboard</h1>
+    </header>
+    
+    <div class="content-grid">
+        <div class="income-expenses-box">
+            <h2>Income: {{ total_income }}</h2>
+            <h2>Expense: {{ total_expense }}</h2>
+            <canvas id="incomeExpenseChart" width="400" height="200"></canvas>
+        </div>
+        <div class="reminder-box">
+            <h2>Reminder</h2>
+            <p>No Reminder</p>
+            <button class="add-reminder-btn">+ Add Reminder</button>
+        </div>
+        <div class="location-box">
+            <h3>Vehicle Current Location</h3>
+            <div class="search-input">
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div class="status-box">
+            <h3>Vehicle Running Status</h3>
+            <div class="search-input">
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const income = Number("{{ total_income|default:'0' }}");
+    const expense = Number("{{ total_expense|default:'0' }}");
+
+    const ctx = document.getElementById('incomeExpenseChart').getContext('2d');
+    const incomeExpenseChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Amount'],
+            datasets: [
+                {
+                    label: 'Income',
+                    data: [income],
+                    fill: false,
+                    borderColor: 'green',
+                    backgroundColor: 'rgba(0, 128, 0, 0.2)',
+                    tension: 0.1
+                },
+                {
+                    label: 'Expense',
+                    data: [expense],
+                    fill: false,
+                    borderColor: 'red',
+                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

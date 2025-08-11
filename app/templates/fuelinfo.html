@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{%load  static %}
+{% block content%}
+<link rel="stylesheet" href="{% static 'fuelinfo.css' %}">
+    <div class="main-content">
+        <div class="header">
+            <span>Fuel Info</span>
+            <span class="breadcrumb">Dashboard / Fuel info</span>
+        </div>
+        <div class="content">
+            <div class="table-container">
+                <div class="table-header">
+                    <span>Fuel Info</span>
+                    <input type="text" placeholder="Search:" class="search-box">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Fuel Fill Date</th>
+                            <th>Vehicle</th>
+                            <th>Quantity</th>
+                            <th>Fuel Total Price</th>
+                            <th>Odometer Reading</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="9" class="no-data">No data available in table</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-footer">
+                    <button disabled>Previous</button>
+                    <button disabled>Next</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <span>Developed by Getsurenameides.</span>
+            <span class="version">Version 1.0</span>
+        </div>
+    </div>
+{% endblock %}

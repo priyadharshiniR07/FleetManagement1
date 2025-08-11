@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Driver Info - Campcodes</title>
+  <link rel="stylesheet" href="driver_info.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="left-panel">
+            <div class="logo-area">
+                <div class="logo-text">Campcodes</div>  
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="nav-item active"><a href="#">Dashboard</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="dropdown-toggle">Vehicle <span class="arrow">&#x25BC;</span></a>
+                        <ul class="dropdown-menu"> 
+                            <li class="nav-subitem"><a href="vehicle.html">Vehicle List</a></li>
+                            <li class="nav-subitem"><a href="vehicle.html">Add Vehicle</a></li>
+                            <li class="nav-subitem"><a href="veh_man.html">Vehicle management</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="driver_info.html">Driver's</a></li>
+                    <li class="nav-item"><a href="#">Booking's</a></li>
+                    <li class="nav-item"><a href="#">Customer</a></li>
+                    <li class="nav-item"><a href="#">Fuel</a></li>
+                    <li class="nav-item"><a href="#">Reminder</a></li>
+                    <li class="nav-item"><a href="#">Income & Expenses</a></li>
+                    <li class="nav-item"><a href="#">Tracking</a></li>
+                    <li class="nav-item"><a href="#">Reports</a></li>
+                    <li class="nav-item"><a href="#">Setting's</a></li>
+                    <li class="nav-item"><a href="#">User's</a></li>
+                    <li class="nav-item"><a href="#">GeoForce</a></li>
+                </ul>
+            </nav>
+      <div class="footer">Developed By Getsourcecodes.</div>
+    </aside>
+    <main>
+      <header>
+        <div class="topbar">
+          <div class="success-msg">✔ New driver added successfully..</div>
+        </div>
+      </header>
+      <div class="breadcrumb">Dashboard / Driver Info</div>
+      <section class="content">
+        <h2>Driver Info</h2>
+        <div class="table-container">
+          <div class="table-header">
+            <div></div>
+            <input type="text" placeholder="Search:" class="search-input">
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>License No</th>
+                <th>License Exp Date</th>
+                <th>Date of Joining</th>
+                <th>Is Active</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Will Smith</td>
+                <td>09079373999</td>
+                <td>K32138212</td>
+                <td>2021-11-25</td>
+                <td>2021-07-17</td>
+                <td><span class="active-badge">Active</span></td>
+                <td><span class="edit-icon">&#9998;</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pagination">
+            <button disabled>Previous</button>
+            <span class="current">1</span>
+            <button>Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

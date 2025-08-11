@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4faf9;
+}
+
+.topbar {
+  background: #1177b0;
+  color: #fff;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.menu-icon {
+  font-size: 1.7em;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.logout-icon {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.main-container {
+  display: flex;
+  min-height: calc(100vh - 54px);
+}
+
+main {
+  flex: 1;
+  padding: 30px 40px 0 40px;
+  background: #f4faf9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.breadcrumb {
+  color: #888;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.breadcrumb a {
+  color: #1177b0;
+  text-decoration: none;
+}
+
+h2 {
+  margin-top: 0;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.table-card {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.search-input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+th, td {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #f4f6f9;
+  font-weight: 600;
+}
+
+.no-data {
+  text-align: center;
+}

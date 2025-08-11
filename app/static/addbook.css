@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f7fa;
+}
+
+.sidebar {
+    width: 220px;
+    background: #222d32;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 10px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px 20px 10px 20px;
+    background: #1a2226;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sidebar ul li.active, .sidebar ul li:hover {
+    background: #337ab7;
+}
+
+.sidebar ul li ul {
+    background: #2c3b41;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.sidebar ul li ul li {
+    padding-left: 40px;
+    font-size: 15px;
+}
+
+.sidebar ul li ul li.active-sub {
+    background: #5bc0de;
+    color: #222d32;
+}
+
+.main-content {
+    margin-left: 240px;
+    padding: 30px 40px;
+}
+
+.breadcrumb {
+    color: #337ab7;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.booking-form {
+    background: #fff;
+    padding: 25px 30px 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    max-width: 1000px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: #222d32;
+}
+
+.form-group input,
+.form-group select {
+    padding: 8px 10px;
+    border: 1px solid #d2d6de;
+    border-radius: 4px;
+    font-size: 15px;
+    background: #f9f9f9;
+}
+
+.form-group input[type="date"] {
+    background: #f9f9f9;
+}
+
+.email-row {
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-trip-btn {
+    background: #337ab7;
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+
+.add-trip-btn:hover {
+    background: #23527c;
+}

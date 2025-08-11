@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{%load  static %}
+{% block content%}
+<link rel="stylesheet" href="{% static 'veh_man.css' %}">
+    <div class="main-content">
+        <header>
+            <div class="header-left">
+                <h2>Vehicle Management</h2>
+                <button class="add-new-group">  <a href="addnew.html" > Add New Group </a> </button>
+            </div>
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="breadcrumbs">
+                    <span>Dashboard</span> / <span>Vehicle's Management</span>
+                </div>
+            </div>
+        </header>
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Vehicle Name</th>
+                        <th>Registration Number</th>
+                        <th>Model</th>
+                        <th>Chassis No</th>
+                        <th>Group</th>
+                        <th>In Active</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Audi</td>
+                        <td>2021212</td>
+                        <td>AudiA4</td>
+                        <td>32132132132</td>
+                        <td>Owned</td>
+                        <td><span class="status active">Active</span></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+            </table>
+            <div class="pagination">
+                <button>Previous</button>
+                <span class="page-number">1</span>
+                <button>Next</button>
+            </div>
+        </main>
+    </div>
+{% endblock %}

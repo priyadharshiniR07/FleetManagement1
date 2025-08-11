@@ -1,0 +1,400 @@
+/* General Body & Main Layout */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f2f5; /* Very light grey background for softness */
+    color: #333;
+  }
+  
+  main {
+    padding: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #007bff; /* Primary blue heading */
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  /* Vehicle Tabs & Table */
+  .vehicle-tabs {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin-top: 40px;
+    min-width: unset;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(0, 123, 255, 0.1); /* Subtle border with blue tint */
+  }
+  
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  
+  .tabs a {
+    text-decoration: none;
+  }
+  
+  .tabs button {
+    background: none;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px 8px 0 0;
+    color: #555;
+    font-weight: 600;
+    font-size: 1.05em;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    position: relative;
+    top: 2px;
+  }
+  
+  .tabs button:hover {
+    color: #007bff; /* Primary blue on hover */
+    background: #f0f8ff; /* Very light blue background on hover */
+  }
+  
+  .tabs button.active {
+    background: #007bff; /* Active tab background - Primary blue */
+    color: #fff;
+    box-shadow: 0 -3px 10px rgba(0, 123, 255, 0.3); /* Blue shadow for active tab */
+    border-radius: 8px 8px 0 0;
+    top: 0;
+  }
+  
+  .table-header, .table-row {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    font-size: 1em;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .table-header {
+    font-weight: bold;
+    color: #007bff; /* Primary blue for table header text */
+    background-color: #f8fbff; /* Very light blue background for header */
+    border-radius: 8px 8px 0 0;
+    padding-top: 20px;
+  }
+  
+  .table-row:last-child {
+    border-bottom: none;
+  }
+  
+  .table-header span, .table-row span {
+    flex: 1;
+    text-align: left;
+    padding-right: 10px;
+  }
+  
+  .table-header .search {
+    flex: 2;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    color: #555;
+    font-weight: normal;
+  }
+  
+  .table-header input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95em;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    transition: border-color 0.3s;
+  }
+  
+  .table-header input[type="text"]:focus {
+    border-color: #007bff; /* Primary blue on focus */
+    outline: none;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.08), 0 0 5px rgba(0, 123, 255, 0.4);
+  }
+  
+  .table-row.no-data {
+    color: #888;
+    justify-content: center;
+    padding: 40px 0;
+    font-style: italic;
+    background-color: #fdfdfd;
+  }
+  
+  .table-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px 20px 20px;
+  }
+  
+  .table-footer button {
+    padding: 8px 18px;
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    border-radius: 6px;
+    color: #666;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  .table-footer button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background: #e0e0e0;
+    color: #999;
+    box-shadow: none;
+  }
+  
+  .table-footer button:not(:disabled):hover {
+    background-color: #007bff; /* Primary blue on hover */
+    color: white;
+    border-color: #007bff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4); /* Blue shadow on hover */
+    transform: translateY(-2px);
+  }
+  
+  /* --- Leaflet Map Specific Styles --- */
+  #map-container {
+    position: relative;
+    height: 600px;
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.8); /* White with slight transparency */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 123, 255, 0.2); /* Subtle border matching primary blue */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  #map-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 123, 255, 0.25); /* Enhanced blue-tinted shadow on hover */
+  }
+  
+  #map {
+    height: 100%;
+    width: 100%;
+    border-radius: 18px;
+  }
+  
+  /* Map Controls (Zoom, Fullscreen, Legend) - Use #007bff for accents */
+  .map-controls, .map-fullscreen, .legend {
+    background: rgba(255, 255, 255, 0.7); /* More opaque white for clarity */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 123, 255, 0.2); /* Subtle blue border */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 10px;
+    z-index: 1000;
+  }
+  
+  .map-controls {
+    position: absolute;
+    bottom: 120px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .map-controls button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #007bff; /* Primary blue icons */
+    transition: all 0.2s ease-in-out;
+    border-radius: 8px;
+  }
+  
+  .map-controls button:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Light blue hover background */
+    color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05);
+  }
+  
+  /* Fullscreen Button */
+  .map-fullscreen {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+  }
+  .map-fullscreen:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Light blue hover background */
+    transform: scale(1.05);
+  }
+  .map-fullscreen svg {
+    width: 24px;
+    height: 24px;
+    color: #007bff; /* Primary blue icon */
+  }
+  
+  /* Legend */
+  .legend {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 0.95em;
+    line-height: 1.4;
+    color: #333; /* Darker text for readability */
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .legend-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .legend-color {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 2px solid rgba(0, 123, 255, 0.3); /* Subtle blue border for color swatches */
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Status Bar */
+  .status-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #007bff; /* Solid primary blue background */
+    color: white;
+    padding: 10px 25px;
+    font-size: 0.85em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 998;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 -5px 15px rgba(0, 123, 255, 0.2); /* Blue-tinted shadow */
+  }
+  
+  .status-bar div:nth-child(2), .status-bar div:nth-child(3) {
+    margin-left: auto;
+    padding-left: 20px;
+  }
+  
+  .status-bar #current-time, .status-bar #current-date {
+    font-weight: 600;
+    min-width: 120px;
+    text-align: right;
+  }
+  
+  /* Custom Marker for Alert */
+  .red-marker {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #dc3545; /* Bootstrap's danger red */
+    border: 4px solid white;
+    text-align: center;
+    line-height: 32px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 12px rgba(220, 53, 69, 0.9); /* Stronger red glow */
+    animation: pulse 1.5s infinite ease-out;
+  }
+  /* Styles for the map container */
+#map-container {
+    width: 100%; /* Or 75% as you suggested for 3/4 width */
+    max-width: 900px; /* Adjust as needed */
+    height: 500px; /* <--- THIS IS CRITICAL for map height */
+    margin: 20px auto; /* Center it with some margin */
+    border-radius: 18px; /* Rounded corners */
+    overflow: hidden; /* Ensure content respects border-radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: relative; /* For positioning controls */
+}
+
+#map {
+    width: 100%;
+    height: 100%; /* <--- THIS IS CRITICAL, fills parent container */
+}
+/* ... other styles ... */
+
+/* --- Leaflet Map Specific Styles --- */
+#map-container {
+    position: relative;
+    height: 600px; /* This sets the height for the container */
+    width: 100%; /* This makes it full width relative to its parent */
+    margin-top: 30px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#map-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 123, 255, 0.25);
+}
+
+#map {
+    height: 100%; /* This makes the map fill the height of its container */
+    width: 100%; /* This makes the map fill the width of its container */
+    border-radius: 18px;
+}
+
+/* ... rest of your CSS ... */
+/* ... rest of your CSS for fullscreen, controls, legend, status bar ... */
+  @keyframes pulse {
+    0% {
+        transform: scale(0.85);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.85);
+        opacity: 0.9;
+    }
+    
+  }

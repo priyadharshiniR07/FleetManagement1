@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="main">
+<link rel="stylesheet" href="{% static 'basicinfo.css' %}">
+        <div class="header">
+            <span>Vehicle Details</span>
+            <span class="breadcrumb">Home / Vehicle Details</span>
+        </div>
+        <div class="content">
+            <div class="vehicle-summary">
+                <div class="vehicle-title">{{ vehicle.Name }}</div>
+                <div class="vehicle-type">{{ vehicle.Type }}</div>
+                <div class="status active">Active</div>
+                <div class="stats">
+                    <div>Bookings <span>0</span></div>
+                    <div>Geofence <span>0</span></div>
+                    <div>Notifications <span>0</span></div>
+                </div>
+            </div>
+            <div class="vehicle-details">
+                <div class="tabs">
+                    <button class="active">Basic Info</button>
+                    <button>Bookings <a href="{% url 'bookings' %}"></a></button>
+                    <button>Income & Expense<a href="{% url 'inex' %}"></a></button>
+                </div>
+                <table>
+                    <tr><td>Registration No</td><td>{{ vehicle.VehicleRegNo }}</td></tr>
+                    <tr><td>Name</td><td>{{ vehicle.Name }}</td></tr>
+                    <tr><td>Type</td><td>{{ vehicle.Type }}</td></tr>
+                    <tr><td>API URL</td><td>http://localhost/api</td></tr>
+                    <tr><td>GPS API Username</td><td>2021212</td></tr>
+                    <tr><td>GPS API Password</td><td>241895</td></tr>
+                    <tr><td>Created Date</td><td>2021-07-17 04:43:22</td></tr>
+                    <tr><td>Modified Date</td><td>2021-07-17 10:44:29</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

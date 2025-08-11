@@ -1,0 +1,277 @@
+.body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f6f8fa; /* Light teal background */
+    color: #333;
+    line-height: 1.6;
+}
+.topbar {
+    background: #1976d2;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Left Panel (Sidebar) */
+.left-panel {
+    background-color: #173341; /* Grayish blue sidebar */
+    width: 220px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-logo-area {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #096391;
+    margin-bottom: 20px;
+}
+
+.logo-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav .nav-item {
+    margin-bottom: 8px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.main-nav .nav-item a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav .nav-item.active a,
+.main-nav .nav-item a:hover {
+    background-color: #455a64; /* Darker grayish blue */
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+    color: #263238; /* Dark grayish blue */
+    margin-top: 0;
+}
+
+/* Overview Cards */
+.overview-cards {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.overview-card {
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.overview-card.green { background-color: #aed581; }
+.overview-card.cyan { background-color: #4dd0e1; }
+.overview-card.light-gray { background-color: #cfd8dc; }
+.overview-card.light-green { background-color: #81c784; }
+.overview-card.red { background-color: #e57373; }
+
+/* Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.income-expenses-box,
+.reminder-box,
+.location-box,
+.status-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.income-expenses-box h2,
+.reminder-box h2,
+.location-box h3,
+.status-box h3 {
+    color: #263238;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.reminder-box p {
+    color: #78909c;
+    margin-bottom: 15px;
+}
+
+.add-reminder-btn {
+    background-color: #1e88e5; /* Blue button */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-reminder-btn:hover {
+    background-color: #1565c0;
+}
+
+.search-input input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #90a4ae;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .left-panel {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .main-nav ul {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .main-nav .nav-item {
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+
+    .overview-cards {
+        overflow-x: auto;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Dropdown menu adjustments for mobile */
+    .main-nav .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: transparent;
+        min-width: auto;
+    }
+
+    .main-nav .dropdown-menu li a {
+        padding-left: 30px;
+        background-color: transparent;
+        color: #fff;
+    }
+
+    .main-nav .nav-item.dropdown > a .arrow {
+        display: none;
+    }
+}
+
+/* Dropdown menu styles */
+.main-nav .nav-item.dropdown > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #3498db;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav .nav-item.dropdown > a:hover,
+.main-nav .nav-item.dropdown.active > a {
+    background-color: #2980b9;
+}
+
+.main-nav .nav-item.dropdown > a .arrow {
+    margin-left: 8px;
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when dropdown is active */
+.main-nav .nav-item.dropdown.active > a .arrow {
+    transform: rotate(180deg);
+}
+
+.main-nav .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2980b9;
+    min-width: 180px;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.main-nav .dropdown-menu li {
+    display: block;
+}
+
+.main-nav .dropdown-menu li a {
+    padding: 10px 15px;
+    color: white;
+    background-color: #2980b9;
+    text-decoration: none;
+    display: block;
+    border-radius: 0;
+    transition: background-color 0.3s ease;
+}
+
+.main-nav .dropdown-menu li a:hover {
+    background-color: #1c5980;
+}
+
+/* Show dropdown menu on hover */
+.main-nav .nav-item.dropdown:hover > .dropdown-menu,
+.main-nav .nav-item.dropdown.active > .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
